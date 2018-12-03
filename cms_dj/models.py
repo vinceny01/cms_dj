@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 
 class cms_dj_login(models.Model):
@@ -16,4 +15,3 @@ class cms_dj_artical(models.Model):
     cms_dj_tag = models.CharField(max_length=255)
     cms_dj_addtime = models.CharField(max_length=255)
     cms_dj_author = models.CharField(max_length=255)
-

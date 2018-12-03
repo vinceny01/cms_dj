@@ -4,6 +4,7 @@ from django.http import  HttpRequest as request
 from django.views.decorators.csrf import csrf_exempt
 from cms_dj.models import cms_dj_login
 from django.contrib.auth import authenticate,login,logout
+from django.shortcuts import redirect
 # coding:utf-8
 # Create your views here.
 
@@ -48,7 +49,8 @@ def login(request):
         user = cms_dj_login.objects.get(cms_dj_username__iexact = cms_dj_username)
         if user:
             if user.cms_dj_password == cms_dj_password:
-                return HttpResponse('登陆成功')
+                #return HttpResponse('登陆成功')
+                return artical(request)
             else:
                 return HttpResponse('登录失败')
         else:
@@ -56,3 +58,6 @@ def login(request):
     except Exception as e:
         print(e)
     return HttpResponse('hello')
+
+def artical(request):
+    return render(request,'index.html')

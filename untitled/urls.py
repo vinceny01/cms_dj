@@ -26,5 +26,7 @@ urlpatterns = [
     url(r'^hello',views.test_render,name = 'test_render'),
     url(r'^home',views.home,name = 'home'),
     url(r'^login',views.login,name = 'login'),
+    url(r'^artical',views.artical,name = 'artical'),
+    #url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 
 ]
