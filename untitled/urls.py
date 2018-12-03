@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from cms_dj import views as views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$',views.index),
+    url(r'^add/$',views.add,name = 'add'),
+    url(r'^add2/(\d+)/(\d+)/$',views.add2,name = 'add2'),
+    url(r'^test',views.test,name='test'),
+    url(r'^hello',views.test_render,name = 'test_render'),
+    url(r'^home',views.home,name = 'home'),
+    url(r'^login',views.login,name = 'login'),
+
 ]
