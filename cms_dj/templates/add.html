@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>KindEditor</title>
+        <link rel="stylesheet" href="../../static/kindeditor/themes/qq/qq.css" />
+        <link rel="stylesheet" href="../../static/kindeditor/plugins/code/prettify.css"  />
+        <script charset="UTF-8" src="../../static/kindeditor/kindeditor-all-min.js"></script>
+        <script charset="UTF-8" src="../../static/kindeditor/lang/zh-CN.js"></script>
+        <script charset="UTF-8" src="../../static/kindeditor/plugins/code/prettify.js"></script>
+        <script type="text/javascript">
+            var editor1;
+            KindEditor.ready(function(K){
+                  editor1=K.create('#t1',{
+                    cssPath:'../../static/kindeditor/plugins/code/prettify.css',
+//                    uploadJson:'../asp.net/upload_json.ashx',
+//                    fileManagerJson:'../asp.net/file_manager_json.ashx',
+                    allowFileManager:true,
+                    afterCreate:function(){
+                        var self=this;
+//                        K.ctrl(doument,13,function(){
+//                            self.sync();
+//                            K('form[name=example]')[0].submit();
+//                        });
+//                        K.ctrl(self.edit.doc,13,function(){
+//                            self.sync();
+//                            K('form[name=example]')[0].submit();
+//                        });
+                    }
+                });
+                prettyPrint();
+            });
+            function preSave(){
+                 var html = editor1.html();
+                 editor1.sync();
+                 var s =document.getElementById("t1").value;
+                 document.getElementById("t2").value = s;
+                 alert(s); 
+                 return false;
+            }
+        </script>
+    </head>
+    <body>
+         <form id="example" name="example">
+         <label>详细内容：</label>
+        <textarea id="t1" name="t1" cols="100" rows="8" style="width:700px;height:200px;visibility:hidden;">
+            
+        </textarea>
+        <input type="hidden" id="t2" value="" />
+        <input type="submit" id="submit" value="提交" onclick="return preSave();" />
+    </form>
+    </body>
+</html>

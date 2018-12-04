@@ -40,9 +40,9 @@ def home2(request):
 @csrf_exempt
 def login(request):
     print (request.method)
-    cms_dj_username = request.POST['logname']
+    cms_dj_username = request.POST.get('logname')
     print(cms_dj_username)
-    cms_dj_password = request.POST['logpass']
+    cms_dj_password = request.POST.get('logpass')
     print(cms_dj_password)
     #return HttpResponse('hello world')
     try:
@@ -60,4 +60,4 @@ def login(request):
     return HttpResponse('hello')
 
 def artical(request):
-    return render(request,'index.html')
+    return render(request,'add.html')

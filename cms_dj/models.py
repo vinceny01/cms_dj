@@ -15,3 +15,12 @@ class cms_dj_artical(models.Model):
     cms_dj_tag = models.CharField(max_length=255)
     cms_dj_addtime = models.CharField(max_length=255)
     cms_dj_author = models.CharField(max_length=255)
+
+from ckeditor_uploader.fields import RichTextUploadingField
+class Entry(models.Model):
+    body = RichTextUploadingField() #RichTextField()
+
+from ckeditor.fields import RichTextField
+class Post(models.Model):
+    content = RichTextField()
+
