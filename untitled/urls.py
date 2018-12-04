@@ -28,5 +28,7 @@ urlpatterns = [
     url(r'^login',views.login,name = 'login'),
     url(r'^artical',views.artical,name = 'artical'),
     #url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^uploadFile',views.upload_file,name = 'upload'),
+    url(r'^show',views.show,name = 'show'),
 
 ]
