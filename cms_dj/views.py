@@ -93,4 +93,5 @@ def show(request):
     #return render(request,'show.html',src)
     #src_list = models.cms_dj_artical.objects.values_list('cms_dj_tag', flat=True).filter(id=0)
     model_list = models.cms_dj_artical.objects.all()
-    return render(request,'show.html',{'model_list':model_list})
+   # return render(request,'show.html',{'model_list':model_list})
+    return render(request,'index.html',{'model_list':model_list})
