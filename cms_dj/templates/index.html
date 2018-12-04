@@ -70,7 +70,7 @@
 
 				<ul class="grid swipe-right" id="grid">
                     {% for i in model_list %}
-                        <li><a href="{{ i.cms_dj_url }}"><img src="{{ i.cms_dj_imgsrc }}" alt="img01"><h3>上传者：{{ i.cms_dj_author }}<br>上传时间：{{ i.cms_dj_addtime }}</h3></a></li>
+                        <li><a href="{{ i.cms_dj_url }}"><img src="{{ i.cms_dj_imgsrc }}" alt="img01"><h3>上传者：{{ i.cms_dj_author }}<br>上传时间：{{ i.cms_dj_addtime }}<br>行业标签：{{ i.cms_dj_tag }}<br>特点标签：{{ i.cms_dj_tag_special }}</h3></a></li>
                     {% endfor %}
 
 

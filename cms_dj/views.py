@@ -70,6 +70,7 @@ def artical(request):
 def upload_file(request):
     url = request.POST.get('url')
     tag = request.POST.get('tag')
+    tag_special = request.POST.get('tag_special')
     #cms_dj_url = request.POST.get('u')
     #models.cms_dj_artical.objects.create(cms_dj_url=url,cms_dj_tag=tag,cms_dj_addtime=datetime.datetime.now().strftime('%Y-%m-%d'),cms_dj_author=123)
     if request.method == "POST":    # 请求方法为POST时，进行处理
@@ -83,7 +84,8 @@ def upload_file(request):
         destination.close()
         models.cms_dj_artical.objects.create(cms_dj_url=url, cms_dj_tag=tag,
                                              cms_dj_addtime=datetime.datetime.now().strftime('%Y-%m-%d'),
-                                             cms_dj_author=request.session.get('username',None),cms_dj_imgsrc="../../static/img/"+myFile.name)
+                                             cms_dj_author=request.session.get('username',None),cms_dj_imgsrc="../../static/img/"+myFile.name,
+                                             cms_dj_tag_special=tag_special)
         return HttpResponse("upload over!")
     return HttpResponse("upload over!")
 

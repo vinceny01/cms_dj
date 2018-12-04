@@ -3,13 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+     <link rel="stylesheet" href="../../static/kindeditor/themes/qq/qq.css" />
+        <link rel="stylesheet" href="../../static/kindeditor/plugins/code/prettify.css"  />
+        <script charset="UTF-8" src="../../static/kindeditor/kindeditor-all-min.js"></script>
+        <script charset="UTF-8" src="../../static/kindeditor/lang/zh-CN.js"></script>
+        <script charset="UTF-8" src="../../static/kindeditor/plugins/code/prettify.js"></script>
+        <script type="text/javascript">
+            var editor1;
+            KindEditor.ready(function(K){
+                  editor1=K.create('#t1',{
+                    cssPath:'../../static/kindeditor/plugins/code/prettify.css',
+//                    uploadJson:'../asp.net/upload_json.ashx',
+//                    fileManagerJson:'../asp.net/file_manager_json.ashx',
+                    allowFileManager:true,
+                    afterCreate:function(){
+                        var self=this;
+//                        K.ctrl(doument,13,function(){
+//                            self.sync();
+//                            K('form[name=example]')[0].submit();
+//                        });
+//                        K.ctrl(self.edit.doc,13,function(){
+//                            self.sync();
+//                            K('form[name=example]')[0].submit();
+//                        });
+                    }
+                });
+                prettyPrint();
+            });
+            function preSave(){
+                 var html = editor1.html();
+                 editor1.sync();
+                 var s =document.getElementById("t1").value;
+                 document.getElementById("t2").value = s;
+                 alert(s);
+                 return false;
+            }
+        </script>
 </head>
 <body>
     <form enctype="multipart/form-data" action="/uploadFile/" method="post">
         url填写：<input type="text" name="url">
-        标签选择：<input type="text" name="tag">
+        行业标签选择：<input type="text" name="tag">
+        特点标签选择：<input type="text" name="tag_special">
    文件上传：<input type="file" name="myfile" />
    <br/>
+         <label>添加描述：</label>
+        <textarea id="t1" name="t1" cols="100" rows="8" style="width:700px;height:200px;visibility:hidden;">
+
+        </textarea>
+        <input type="hidden" id="t2" value="" />
    <input type="submit" value="upload"/>
 </form>
 </body>
