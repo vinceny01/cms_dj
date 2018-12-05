@@ -26,9 +26,10 @@ urlpatterns = [
     url(r'^hello',views.test_render,name = 'test_render'),
     url(r'^home',views.home,name = 'home'),
     url(r'^login',views.login,name = 'login'),
-    url(r'^artical',views.artical,name = 'artical'),
+    url(r'^search',views.search,name = 'search'),
     #url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^uploadFile',views.upload_file,name = 'upload'),
     url(r'^show',views.show,name = 'show'),
+    url(r'^search_sw',views.search_sw,name = 'show'),
 
 ]
