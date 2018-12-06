@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>搜索页</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	overflow: hidden;
+}
+</style>
+<link href="../../static/css/css2/font.css" rel="stylesheet">
+<link rel="stylesheet" href="../../static/css/css2/style.css">
+<link rel="stylesheet" href="../../static/css/css2/style-search.css" media="screen" type="text/css" />
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+{#<script>#}
+{#	function c(){#}
+{#	location.href="http://www.baidu.com/s?wd="+$("#input").val();#}
+{#	}#}
+{#</script>#}
+</head>
+
+<body>
+<canvas id="canvas" width="1280" height="1024"> 您的浏览器不支持canvas标签，请您更换浏览器 </canvas>
+<script src="../../static/js/word.js"></script>
+<p id="offscreen-text" class="offscreen-text"></p>
+<p id="text" class="text"></p>
+<!--<svg id="svg" > </svg>-->
+<form action="/search/" method="post">{% csrf_token %}
+
+    <div id="d" class="webdesigntuts-workshop"> <span>
+  <input class="input" id="input" type="search" name = "search" placeholder="请输入标签"/>
+  <button type="submit" >搜索</button>
+  </span> </div>
+
+
+</form>
+
+
+
+<script  src='../../static/js/index.js'></script>
+</body>
+</html>
