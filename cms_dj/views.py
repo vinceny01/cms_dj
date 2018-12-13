@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.shortcuts import redirect
 import os
 import datetime
+from django.core import serializers
 from cms_dj import models
 # coding:utf-8
 # Create your views here.
@@ -97,12 +98,15 @@ def upload_file(request):
 
 @csrf_exempt
 def show(request):
+    #print(request.session['username'])
     if request.session['username'] == None and request.session['username'] == '':
         return HttpResponse('请先登录')
     else:
+        ...
         # src = models.cms_dj_artical.objects.values_list('cms_dj_tag', flat=True).filter(id=0)
         # return render(request,'show.html',src)
         # src_list = models.cms_dj_artical.objects.values_list('cms_dj_tag', flat=True).filter(id=0)
+        ...#可以删掉
         model_list = models.cms_dj_artical.objects.all()
         # return render(request,'show.html',{'model_list':model_list})
         return render(request, 'index.html', {'model_list': model_list})
@@ -113,14 +117,18 @@ def page_not_found(request):
 
 @csrf_exempt
 def search(request):
-    tag = 123
-    #tag = request.POST.get('search')
+    #tag = 'admin'
+    tag = request.GET.get('search')
     print(tag)
-    search_result = models.cms_dj_artical.objects.get(cms_dj_tag=tag)
-    return render(request,'search_result.html',{'search_result': search_result})
-    #return HttpResponse('hello')
+    #search_result = models.cms_dj_artical.objects.filter(cms_dj_tag=tag).values_list().all() #直接返回结果集 不是json格式
+    search_result = models.cms_dj_artical.objects.filter(cms_dj_tag=tag)
+    print(search_result)
+    json_data = serializers.serialize('json',search_result)
+    #return render(request,'search_result.html',{'search_result': search_result})#渲染结果集到前端页面
+    print(json_data)
+    return HttpResponse(json_data)
     #pass
-    return HttpResponse('error')
+    #return HttpResponse(search_list)
 
 @csrf_exempt
 def search_sw(request):
